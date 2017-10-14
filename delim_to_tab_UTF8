@@ -1,0 +1,4 @@
+for f in *.ext
+do
+ sed 's/ \+/\t/g' $f > tabbed-"$f"
+done
