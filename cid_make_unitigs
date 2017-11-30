@@ -1,0 +1,11 @@
+#!/bin/bash
+
+### clone, imprint && distribute
+### make unitigs with base file name
+
+for f in *.fa; do sed '1!{/^>/d;}' $f >"$f".1; done  ###delete all contig seperators after first
+for i in *.1
+do
+ j=$(basename $i .fa.1)
+ sed "s/>.*/>${j}/" $i > "$i".out
+done    ###rename first contig to base filename
