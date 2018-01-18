@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while read -r old new
+do
+    arr=( ${old}*.fa )
+    if (( ${#arr[@]} == 1 ))
+    then
+        mv "${arr[0]}" "$new.fa"
+    else
+        echo "Error: Multiple files found for $old: ${arr[@]}"
+    fi
+done < GMP_key.txt
