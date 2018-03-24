@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for f in *.bgo
+do
+ grep -nroihe "AM_[0-9][0-9][0-9][0-9][0-9]" $f > "$f".genes
+ sed -i 's/.*://g' "$f".genes
+  while read l
+  do
+   grep -nri $l A.ko >> "$f".ko2
+  done <"$f".genes
+ grep -nroihe "K[0-9][0-9][0-9][0-9][0-9]" "$f".ko2 > "$f".ko
+ sed -i 's/.*://g' "$f".ko
+done
