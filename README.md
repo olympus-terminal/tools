@@ -1,2 +1,2 @@
 # cid
-Clone, imprint, and distribute
+Clone, imprint, and distribute - command line tools for bioinformatics
