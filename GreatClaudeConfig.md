@@ -22,7 +22,7 @@ This includes:
 - Do what has been asked; nothing more, nothing less
 - NEVER create files unless absolutely necessary
 - ALWAYS prefer editing existing files over creating new ones
-- When creating a new file or program, add a timestamp to the filename
+- When creating a new file or program, add a timestamp to the filename - make certain that new output files from developed programs will not override each other
 - Do not run programs on synthetic or subsampled data unless explicitly requested
 - ALWAYS make sure new results files can be traced to the program that generated them
 
@@ -36,7 +36,7 @@ This includes:
 
 When asked to explain analysis results or figures:
 1. Show the exact code/formula that generated the data FIRST
-2. 2. Print actual numerical values (not descriptions)
+2. Print actual numerical values (not descriptions)
 3. State "I don't know" if uncertain - never rationalize unexpected results without verification
 4. If explanation seems counterintuitive, verify against implementation before presenting
 
