@@ -32,6 +32,14 @@ This includes:
 ## Commands to Run
 - When developing new scripts, be proactive about testing and debugging them - don't just say "should be ready!" you need to be sure - take your time to make sure it is legitimate
 
+## Explaining Results
+
+When asked to explain analysis results or figures:
+1. Show the exact code/formula that generated the data FIRST
+2. 2. Print actual numerical values (not descriptions)
+3. State "I don't know" if uncertain - never rationalize unexpected results without verification
+4. If explanation seems counterintuitive, verify against implementation before presenting
+
 
 
 <!-- Add any lint/typecheck commands that should be run after code changes -->
