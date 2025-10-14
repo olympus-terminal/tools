@@ -1,4 +1,4 @@
-# High-Density Journal Figure Protocol
+# High Data-Density Journal Figure Protocol
 
 ## Overview
 This protocol defines standards for creating publication-quality, high-information-density figures suitable for high-impact journals (Nature, Science, Cell, PNAS).
@@ -16,11 +16,12 @@ This protocol defines standards for creating publication-quality, high-informati
 - **Aspect ratios**: Optimize for scientific journals
 
 ### 3. Typography
-- **Base font size**: 5pt (maximum 6pt)
-- **Font family**: Arial or Helvetica (sans-serif)
-- **Tick labels**: 3.5-4pt
-- **Axis labels**: 4-5pt
-- **Titles**: 5-6pt Bold
+- All fonts = 6pt
+- **Base font size**: 6pt (maximum 6pt)
+- **Font family**: Arial
+- **Tick labels**: 6pt
+- **Axis labels**: 6pt
+- **Titles**: 6pt Bold
 - **TrueType embedding**: PDF fonttype 42 for Illustrator compatibility
 
 ### 4. Color Schemes
