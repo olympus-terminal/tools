@@ -1,4 +1,5 @@
 #!/bin/zsh
+# for when file naming matters
 
 for file in "$@"; do
     if [ -f "$file" ]; then
