@@ -1,7 +1,5 @@
 # Claude Instructions
 
-## Core Principles
-- NEVER create scripts or figures using synthetic, simulated, or randomly generated data as a substitute for real experimental results.
 ## CRITICAL: Data Integrity Policy
 
 **NEVER create scripts or figures using synthetic, simulated, or randomly generated data as a substitute for real experimental results.**
@@ -19,18 +17,47 @@ This includes:
 
 **If real data is unavailable:** Stop and request the actual data rather than generating synthetic alternatives.
 
+## Core Principles
+
 - Do what has been asked; nothing more, nothing less
 - NEVER create files unless absolutely necessary
 - ALWAYS prefer editing existing files over creating new ones
-- When creating a new file or program, add a timestamp to the filename - make certain that new output files from developed programs will not override each other
+- When creating a new file or program, add a timestamp to the filename (format: YYYYMMDD_HHMMSS) - make certain that new output files from developed programs will not override each other
 - Do not run programs on synthetic or subsampled data unless explicitly requested
 - ALWAYS make sure new results files can be traced to the program that generated them
 
-## Project-Specific Context
-<!-- Add your project-specific instructions here -->
+## Memory-Efficient Coding
 
-## Commands to Run
-- When developing new scripts, be proactive about testing and debugging them - don't just say "should be ready!" you need to be sure - take your time to make sure it is legitimate
+**ALWAYS prioritize memory-efficient implementations by default:**
+
+- **Stream large files** line-by-line or in chunks instead of loading entire files into memory
+- **Use generators and iterators** instead of loading full datasets into lists/arrays
+- **Process data in batches** when dealing with multi-million line files
+- **Clean up variables** with `del` when large objects are no longer needed
+- **Use appropriate data structures** (e.g., numpy arrays vs lists, pandas chunking)
+- **Estimate memory usage** before loading data (file size × parsing overhead)
+- **Profile memory consumption** for scripts handling >1M lines or >1GB files
+
+**Common patterns to AVOID:**
+- `lines = file.readlines()` for large files → use `for line in file:`
+- `data = [process(x) for x in huge_list]` → use generators or chunk processing
+- Loading entire genome files into memory when only sequential access is needed
+
+**When to override:** If explicitly told to run on a bigmem node or high-memory system, or if memory-intensive approach is specifically requested
+
+## Script Development & Testing
+
+**Before running scripts on full datasets:**
+- Test on small subsets of data first to verify correctness
+- Estimate and report expected runtime for large operations
+- Check if output files already exist before recomputing
+- Use existing tools/libraries when available rather than reimplementing
+
+**When developing new scripts:**
+- Be proactive about testing and debugging - don't just say "should be ready!" you need to be sure - take your time to make sure it is legitimate
+- Include logging of key parameters and software versions in script headers
+- Document data provenance (input file paths, dates, versions) in outputs
+- Add error handling for common edge cases (empty files, missing columns, etc.)
 
 ## Explaining Results
 
@@ -40,9 +67,3 @@ When asked to explain analysis results or figures:
 3. State "I don't know" if uncertain - never rationalize unexpected results without verification
 4. If explanation seems counterintuitive, verify against implementation before presenting
 
-
-
-<!-- Add any lint/typecheck commands that should be run after code changes -->
-<!-- Example: -->
-<!-- npm run lint -->
-<!-- npm run typecheck -->
