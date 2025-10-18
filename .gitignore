@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Downloads and logs
+downloads/
+*.log
+breaks/
+
+# Personal queue files
+queue*.txt
+*.txt
+!requirements.txt
+
+# Environment
+.env
+environment.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
