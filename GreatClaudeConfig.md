@@ -67,3 +67,6 @@ When asked to explain analysis results or figures:
 3. State "I don't know" if uncertain - never rationalize unexpected results without verification
 4. If explanation seems counterintuitive, verify against implementation before presenting
 
+## visualizations
+
+REFER TO FIGURE_PROTOCOL.MD for visualization guides and always adhere to those rules unless explicitly stated otherwise by user
