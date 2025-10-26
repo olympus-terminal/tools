@@ -61,7 +61,7 @@ This includes:
 - Add error handling for common edge cases (empty files, missing columns, etc.)
 
 ## Explaining Results
-
+ALWAYS GIVE REALPATHs of created files
 When asked to explain analysis results or figures:
 1. Show the exact code/formula that generated the data FIRST
 2. Print actual numerical values (not descriptions)
