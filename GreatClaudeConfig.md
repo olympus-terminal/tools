@@ -14,6 +14,12 @@ This includes:
 - Standard ML training operations (batch sampling, weight initialization, dropout)
 - Statistical bootstrapping or resampling of real data
 - Test cases clearly marked as synthetic for unit testing only
+  
+All scripts performing data analysis or visualization must call enforce_data_integrity() at startup.
+
+The guard ensures compliance with the Data Integrity Policy and halts execution on violation.
+
+This safeguard is mandatory for all pipelines before release or publication.
 
 **If real data is unavailable:** Stop and request the actual data rather than generating synthetic alternatives.
 
