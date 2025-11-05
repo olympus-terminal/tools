@@ -17,6 +17,79 @@ This includes:
 
 **If real data is unavailable:** Stop and request the actual data rather than generating synthetic alternatives.
 
+## Data Integrity Enforcement
+
+Purpose:
+Ensure no analysis, visualization, or interpretability step can proceed if synthetic or placeholder data is generated, intentionally or unintentionally.
+
+Implementation Steps:
+
+Runtime Guard:
+
+Every analysis, plotting, or interpretability script must import and call:
+
+from DataIntegrityGuard import enforce_data_integrity
+enforce_data_integrity()
+
+
+at the very beginning of execution.
+
+What the guard does:
+
+Scans the active script for forbidden functions or modules, including:
+
+np.linspace, np.random.*, torch.rand*, random.*, faker.*, synthetic*
+
+
+Aborts immediately with a clear error message if any are detected.
+
+Allows exceptions only when the script header contains:
+
+# ALLOW_SYNTHETIC_FOR_TRAINING
+
+
+and when the context is confirmed to be model training or bootstrapping.
+
+Figure/Analysis Input Validation:
+
+All data passed to visualization or metrics functions must originate from real files, not in-memory arrays or lists.
+
+Example:
+
+validate_input_source(input_path)
+
+
+where validate_input_source checks for a valid, existing file.
+
+Provenance Logging (Mandatory):
+
+Every output file (figures, metrics, CSVs) must contain a header or metadata block:
+
+# Provenance:
+#   Script: /abs/path/to/script.py
+#   Input:  /abs/path/to/data.tsv
+#   Date:   YYYY-MM-DD HH:MM:SS
+#   Integrity Check: PASSED
+
+
+Testing the Guard:
+
+A unit test (test_data_integrity.py) must be included in the repository.
+
+Example:
+
+def test_no_fake_data():
+    import pytest, numpy as np
+    from DataIntegrityGuard import enforce_data_integrity
+    with pytest.raises(RuntimeError):
+        np.linspace(0, 1, 10)
+
+
+Zero Tolerance:
+
+Any detected use of placeholder or synthetic data in analysis triggers a critical policy violation and must be escalated for review.
+
+
 ## Core Principles
 
 - Do what has been asked; nothing more, nothing less
