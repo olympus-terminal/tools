@@ -146,6 +146,14 @@ gs = gridspec.GridSpec(6, 5, figure=fig,
 - [ ] Line weights = 0.25pt
 - [ ] No subscript/superscript unicode
 
+  Key Design Changes to Eliminate Overlaps:
+
+  1. Removed all value labels from bars - Readers use axis instead
+  2. Separate table panels - All numerical values in clean tables
+  3. Increased spacing - More whitespace between all elements
+  4. Strategic positioning - Panel labels away from titles/data
+  5. No text on graphics - All annotations in separate areas
+  
 ### Export Settings
 ```python
 # ALWAYS use vector formats (PDF + SVG) - NO PNG raster files
