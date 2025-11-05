@@ -2,10 +2,10 @@
 
 ## CRITICAL: Data Integrity Policy
 
-**NEVER create scripts or figures using synthetic, simulated, or randomly generated data as a substitute for real experimental results.**
+**NEVER create scripts, figures, or result files using synthetic, simulated, or randomly generated data as a substitute for real experimental results.**
 
 This includes:
-- DO NOT use `np.random`, `torch.rand`, or similar functions to generate fake scientific data for publication figures
+- DO NOT use `np.random`, `torch.rand`, or 'np.linspace()' for dummy importance values or similar functions to generate fake scientific data for publication figures
 - DO NOT create "improved" or "cleaned up" visualizations based on summary statistics instead of raw data
 - DO NOT reconstruct attribution patterns, gradients, or any analysis results from partial information
 - DO NOT generate placeholder data for CAV analysis, uncertainty quantification, or any interpretability methods
