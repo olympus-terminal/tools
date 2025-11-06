@@ -30,32 +30,6 @@ Ensure no analysis, visualization, or interpretability step can proceed if synth
 
 Implementation Steps:
 
-Runtime Guard:
-
-Every analysis, plotting, or interpretability script must import and call:
-
-from DataIntegrityGuard import enforce_data_integrity
-enforce_data_integrity()
-
-
-at the very beginning of execution.
-
-What the guard does:
-
-Scans the active script for forbidden functions or modules, including:
-
-np.linspace, np.random.*, torch.rand*, random.*, faker.*, synthetic*
-
-
-Aborts immediately with a clear error message if any are detected.
-
-Allows exceptions only when the script header contains:
-
-# ALLOW_SYNTHETIC_FOR_TRAINING
-
-
-and when the context is confirmed to be model training or bootstrapping.
-
 Figure/Analysis Input Validation:
 
 All data passed to visualization or metrics functions must originate from real files, not in-memory arrays or lists.
