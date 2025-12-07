@@ -23,6 +23,13 @@ This safeguard is mandatory for all pipelines before release or publication.
 
 **If real data is unavailable:** Stop and request the actual data rather than generating synthetic alternatives.
 
+**NEVER fabricate metadata or annotations:**
+     DO NOT invent PFAM/protein domain functional descriptions
+     DO NOT make up gene names, GO terms, or pathway annotations
+     DO NOT guess or infer biological functions without verified source data
+     If annotation data is not in a local file or successfully retrieved from an API, state "annotation not available" rather than fabricating one
+     When fetching external data (e.g., InterPro API), only report what was actually returned - never fill in gaps with plausible-sounding information
+
 ## Data Integrity Enforcement
 
 Purpose:
