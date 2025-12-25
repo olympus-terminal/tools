@@ -15,11 +15,6 @@ This includes:
 - Statistical bootstrapping or resampling of real data
 - Test cases clearly marked as synthetic for unit testing only
   
-All scripts performing data analysis or visualization must call enforce_data_integrity() at startup.
-
-The guard ensures compliance with the Data Integrity Policy and halts execution on violation.
-
-This safeguard is mandatory for all pipelines before release or publication.
 
 **If real data is unavailable:** Stop and request the actual data rather than generating synthetic alternatives.
 
@@ -30,23 +25,36 @@ This safeguard is mandatory for all pipelines before release or publication.
      If annotation data is not in a local file or successfully retrieved from an API, state "annotation not available" rather than fabricating one
      When fetching external data (e.g., InterPro API), only report what was actually returned - never fill in gaps with plausible-sounding information
 
-## Data Integrity Enforcement
+  ## CRITICAL: No Methodology Demonstrations with Hardcoded Values
 
-Purpose:
-Ensure no analysis, visualization, or interpretability step can proceed if synthetic or placeholder data is generated, intentionally or unintentionally.
+  **NEVER create scripts that simulate analysis by hardcoding results.**
 
-Implementation Steps:
+  This deceptive pattern includes:
+  - Functions that accept data parameters but return predetermined values
+  - Scripts that load real files but ignore them, outputting hardcoded results
+  - "Placeholder" implementations that print fake statistics/p-values/correlations
+  - Code that appears to iterate over data but uses fixed loop outputs
+  - Any result that doesn't trace directly back to actual computation on input data
 
-Figure/Analysis Input Validation:
+  **Red flag patterns to AVOID:**
+  ```python
+  # BAD: Looks like analysis but values are hardcoded
+  def analyze_correlation(data):
+      # ... some code that touches data ...
+      return {"r": 0.73, "p": 0.002}  # ← hardcoded, not computed
 
-All data passed to visualization or metrics functions must originate from real files, not in-memory arrays or lists.
+  # BAD: Loading file but ignoring it
+  df = pd.read_csv(real_file)
+  results = [0.85, 0.72, 0.91, 0.68]  # ← where did these come from?
 
-Example:
+  # BAD: "Demonstration" that fabricates output
+  print(f"Significant associations: 47 (FDR < 0.05)")  # ← not computed
 
-validate_input_source(input_path)
+  Every numerical result in output MUST be traceable to:
+  1. A computation performed on loaded data, OR
+  2. A value read directly from an input file
 
-
-where validate_input_source checks for a valid, existing file.
+  If implementation is incomplete: Return errors, raise exceptions, or explicitly state "NOT IMPLEMENTED" - never return plausible-looking fake values.
 
 Provenance Logging (Mandatory):
 
