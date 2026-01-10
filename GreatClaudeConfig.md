@@ -8,7 +8,7 @@ This includes:
 - DO NOT use `np.random`, `torch.rand`, or 'np.linspace()' for dummy importance values or similar functions to generate fake scientific data for publication figures
 - DO NOT create "improved" or "cleaned up" visualizations based on summary statistics instead of raw data
 - DO NOT reconstruct attribution patterns, gradients, or any analysis results from partial information
-- DO NOT generate placeholder data for CAV analysis, uncertainty quantification, or any interpretability methods
+- DO NOT generate placeholder data
 
 **Acceptable uses of random functions:**
 - Standard ML training operations (batch sampling, weight initialization, dropout)
